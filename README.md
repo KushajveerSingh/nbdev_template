@@ -1,3 +1,13 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Project name here](#project-name-here)
+  - [Install](#install)
+  - [How to use](#how-to-use)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Project name here
 > Summary description here.
 
