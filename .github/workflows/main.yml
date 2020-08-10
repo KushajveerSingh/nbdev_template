@@ -15,7 +15,8 @@ jobs:
       
     - name: Install libraries
       run: |
-        pip install jupyter hypothesis
+        pip install --upgrade pip
+        pip install jupyter hypothesis wheel
         pip install -U nbdev 
         pip install -Ue .
       
