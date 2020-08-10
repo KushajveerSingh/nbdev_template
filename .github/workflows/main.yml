@@ -1,33 +1,54 @@
 name: CI
-on: [push, pull_request]
+on: 
+  workflow_dispatch:
+  push:
+    branches: [master]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
       with:
-        python-version: '3.6'
+        python-version: '3.8'
         architecture: 'x64'
-    - name: Install the library
+      
+    - name: Install libraries
       run: |
-        pip install nbdev jupyter
-        pip install -e .
-    - name: Read all notebooks
+        pip install jupyter hypothesis
+        pip install -U nbdev 
+        pip install -Ue .
+      
+    - name: Attempt to read notebooks
       run: |
         nbdev_read_nbs
-    - name: Check if all notebooks are cleaned
+      
+    - name: Check if notebooks are clean
+      id: clean
       run: |
-        echo "Check we are starting with clean git checkout"
-        if [ -n "$(git status -uno -s)" ]; then echo "git status is not clean"; false; fi
-        echo "Trying to strip out notebooks"
         nbdev_clean_nbs
-        echo "Check that strip out was unnecessary"
-        git status -s # display the status to see which nbs need cleaning up
-        if [ -n "$(git status -uno -s)" ]; then echo -e "!!! Detected unstripped out notebooks\n!!!Remember to run nbdev_install_git_hooks"; false; fi
-    - name: Check if there is no diff library/notebooks
+        if [ -n "$(git status -uno -s)" ]; then
+          echo "::error::Detected notebooks that are not cleaned."
+          echo "\n\nList of notebooks that are not clean:"
+          git status -s
+          exit 1;
+        fi
+      
+    - name: Check that library syncs with notebooks
+      id: lib
       run: |
-        if [ -n "$(nbdev_diff_nbs)" ]; then echo -e "!!! Detected difference between the notebooks and the library"; false; fi
+        nbdev_diff_nbs > _nbdev_diff_logs.txt
+        if [ -n "$(cat _nbdev_diff_logs.txt)" ]; then 
+          echo "::error::Detected notebooks that are not in sync with the library."
+          cat _nbdev_diff_logs.txt
+          if [[ $auto_fix == 'true' ]]; then 
+            nbdev_build_lib
+          fi
+          exit 1;
+        fi
+
     - name: Run tests
       run: |
-        nbdev_test_nbs
+        python -m unittest discover -s test -v
+
+
