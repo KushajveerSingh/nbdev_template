@@ -10,15 +10,14 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [{Project Name}](#project-name)
-  - [Installation](#installation)
-    - [PyPI](#pypi)
-    - [Docker Image](#docker-image)
-    - [From Source](#from-source)
-  - [Usage details](#usage-details)
-  - [Tests](#tests)
-  - [Contributing](#contributing)
-  - [License](#license)
+- [Installation](#installation)
+  - [PyPI](#pypi)
+  - [Docker Image](#docker-image)
+  - [From Source](#from-source)
+- [Usage details](#usage-details)
+- [Tests](#tests)
+- [Contributing](#contributing)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
