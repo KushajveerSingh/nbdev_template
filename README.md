@@ -6,8 +6,20 @@
 
 [![CI-Badge](https://github.com/KushajveerSingh/{REPO_NAME}/workflows/CI/badge.svg)](https://github.com/KushajveerSingh/{REPO_NAME}/actions?query=workflow%3ACI) [![PyPI](https://img.shields.io/pypi/v/{REPO_NAME}?color=blue&label=pypi%20version)](https://pypi.org/project/{REPO_NAME}/#description) [![Conda (channel only)](https://img.shields.io/conda/vn/kushajveersingh/{REPO_NAME}?color=seagreen&label=conda%20version)](https://anaconda.org/kushajveersingh/{REPO_NAME}) [![Docker](https://raw.githubusercontent.com/KushajveerSingh/nbdev_template/master/docs/images/docker%20image-not%20available-red.svg)](https://hub.docker.com/repository/docker/kushaj/{REPO_NAME})
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Installation](#installation)
+  - [PyPI](#pypi)
+  - [Docker Image](#docker-image)
+  - [From Source](#from-source)
+- [Usage details](#usage-details)
+- [Tests](#tests)
+- [Contributing](#contributing)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Installation
 
