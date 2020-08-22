@@ -4,22 +4,10 @@
 
 **Note**:- If you are reading this message, then it means this is still work in progress. Some things mentioned in README may not work.
 
-[![CI-Badge](https://github.com/KushajveerSingh/{REPO_NAME}/workflows/CI/badge.svg)](https://github.com/KushajveerSingh/{REPO_NAME}/actions?query=workflow%3ACI) [![PyPI](https://img.shields.io/pypi/v/{REPO_NAME}?color=blue&label=pypi%20version)](https://pypi.org/project/{REPO_NAME}/#description) [![Docker](https://raw.githubusercontent.com/KushajveerSingh/nbdev_template/master/docs/images/docker%20image-not%20available-red.svg)](https://hub.docker.com/repository/docker/kushaj/{REPO_NAME})
+[![CI-Badge](https://github.com/KushajveerSingh/{REPO_NAME}/workflows/CI/badge.svg)](https://github.com/KushajveerSingh/{REPO_NAME}/actions?query=workflow%3ACI) [![PyPI](https://img.shields.io/pypi/v/{REPO_NAME}?color=blue&label=pypi%20version)](https://pypi.org/project/{REPO_NAME}/#description) [![Conda (channel only)](https://img.shields.io/conda/vn/kushajveersingh/{REPO_NAME}?color=seagreen&label=conda%20version)](https://anaconda.org/kushajveersingh/{REPO_NAME}) [![Docker](https://raw.githubusercontent.com/KushajveerSingh/nbdev_template/master/docs/images/docker%20image-not%20available-red.svg)](https://hub.docker.com/repository/docker/kushaj/{REPO_NAME})
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [Installation](#installation)
-  - [PyPI](#pypi)
-  - [Docker Image](#docker-image)
-  - [From Source](#from-source)
-- [Usage details](#usage-details)
-- [Tests](#tests)
-- [Contributing](#contributing)
-- [License](#license)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<!-- START doctoc -->
+<!-- END doctoc -->
 
 ## Installation
 
@@ -61,17 +49,12 @@ If you want to browse the notebooks and build the library from them you will nee
 ## Usage details
 
 ## Tests
-To run the tests under `tests` folder, use this command in the home directory ([hypothesis](https://pypi.org/project/hypothesis/) must be installed):
-```
-python -m unittest discover -s tests -v
-```
-
 To run `nbdev` tests i.e. run the jupyter notebooks in `nbs` folder, use this command:
 ```
-nbdev_test_nbs
+nbdev_test_nbs --flags '' --n_workers 3 --pause 0.5
 ```
 
-**Note**:- `nbdev_test_nbs` runs the notebooks in parallel. If the notebook contains some training code (in which a model is trained), then that code will also run. You can comment out the code that issues the training of model, or mark those cells as [slow](https://nbdev.fast.ai/test/), so that these cells do not run and the tests can complete is meaningful time.
+**Note**:- `nbdev_test_nbs` runs the notebooks in parallel. It will not run the cells marked with `%nbdev_slow_test`. You can read more about nbdev tests in the [nbdev documentation](https://nbdev.fast.ai/test.html).
 
 ## Contributing
 After you clone this repository, please run `nbdev_install_git_hooks` in your terminal. This sets up git hooks, which clean up the notebooks to remove the extraneous stuff stored in the notebooks (e.g. which cells you ran) which causes unnecessary merge conflicts. Install [nbdev](https://github.com/fastai/nbdev) is not available.

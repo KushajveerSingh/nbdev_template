@@ -1,6 +1,7 @@
 name: CI
 on: 
   workflow_dispatch:
+  pull_request:
   push:
     branches: [master]
 jobs:
@@ -17,7 +18,7 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install wheel
-        pip install jupyter hypothesis
+        pip install jupyter
         pip install -U nbdev 
         pip install -Ue .
       
@@ -51,6 +52,4 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest discover -s tests -v
-
-
+        nbdev_test_nbs --flags '' --n_workers 3 --pause 0.5
